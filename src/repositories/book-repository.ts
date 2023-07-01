@@ -47,3 +47,10 @@ export async function putBook(Book: CreateBook, id: number){
 
     return Book;
 }
+
+export async function deleteBook(id: number){
+
+    const remove: string = `DELETE FROM books WHERE id = $1`;
+
+    return await connection.query(remove, [id]);
+}

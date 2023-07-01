@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createBook, readBooks, maxCount, readBook, putBook } from "../repositories/book-repository";
+import { createBook, readBooks, maxCount, readBook, putBook, deleteBook } from "../repositories/book-repository";
 import { CreateBook } from "protocols/book-protocol";
 import { testDataBook, RandomizeId, verifyId } from "../services/book-service";
 
@@ -56,6 +56,19 @@ export async function UpdateBook(req: Request, res: Response){
         return res.sendStatus(202);
     } catch (error) {
         console.log(error);
+        return res.status(500).send(error);
+    }
+}
+
+export async function RemoveBook(req: Request, res: Response){
+    const id = Number(req.params.id);
+
+    if(!verifyId(id)) return res.status(400).send("Id não identificado");
+
+    try {
+        await deleteBook(id);
+        return res.sendStatus(202);
+    } catch (error) {
         return res.status(500).send(error);
     }
 }

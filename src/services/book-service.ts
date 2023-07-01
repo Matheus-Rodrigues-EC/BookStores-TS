@@ -13,4 +13,5 @@ export function RandomizeId(max: number){
 
 export function verifyId(id: number){
     if((!id) || (id <= 0)) return false;
+    return true;
 }
