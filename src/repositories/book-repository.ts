@@ -35,3 +35,15 @@ export async function readBook(id: number){
 
     return book.rows[0];
 }
+
+export async function putBook(Book: CreateBook, id: number){
+    const update: string = `UPDATE books SET title = $1, author = $2, genre = $3, 
+                            year_publication = $4, pages = $5, price = $6 WHERE id = $7`;
+
+    await connection.query(
+        update, 
+        [Book.title, Book.author, Book.genre, Book.year_publication, Book.pages, Book.price, id]
+    )
+
+    return Book;
+}
