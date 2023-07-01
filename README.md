@@ -1,6 +1,6 @@
-# BookStore-TS
+!https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/2048px-Typescript_logo_2020.svg.png
 
-![Typescript_logo_2020.svg.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8fae30a0-804e-4ba2-9249-046b5f952d5f/Typescript_logo_2020.svg.png)
+# BookStore-TS
 
 Este projeto é uma simples API que lista e sorteia livros
 
@@ -28,6 +28,9 @@ Para utilizar essa API localmente você precisa possuir o PostgreSQL e o NodeJs 
 ## Uso
 
 - Acesse o link:
+
+https://bookstore-ts.onrender.com/
+
 - Rotas
     - `/health`
         - Essa rota faz a verificação da sua API e retorna a mensagem `I'm Alive` caso o servidor esteja funcionando corretamente.
