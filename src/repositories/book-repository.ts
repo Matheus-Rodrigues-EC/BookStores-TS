@@ -1,3 +1,4 @@
+import { QueryResult } from "pg";
 import { connection } from "../config/dataBase";
 import { CreateBook } from "../protocols/book-protocol";
 
@@ -9,4 +10,12 @@ export async function createBook(Book: CreateBook) {
     await connection.query(insert, [Book.title, Book.author, Book.genre, Book.year_publication, Book.pages, Book.price]);
 
     return Book;
+}
+
+export async function readBooks(){
+    const select: string = `SELECT * FROM books`;
+
+    const list = await connection.query<CreateBook>(select);
+
+    return list.rows;
 }

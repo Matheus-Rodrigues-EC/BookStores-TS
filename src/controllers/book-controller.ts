@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createBook } from "../repositories/book-repository";
+import { createBook, readBooks } from "../repositories/book-repository";
 import { CreateBook } from "protocols/book-protocol";
 import { testDataBook } from "../services/book-service";
 
@@ -14,6 +14,15 @@ export async function AddBook(req: Request, res: Response){
         return res.sendStatus(201);
     } catch (error) {
         console.log(error);
-        return res.status(400).send(error);
+        return res.status(500).send(error);
+    }
+}
+
+export async function GetBooks(req: Request, res: Response){
+    try {
+        const booksList = await readBooks();
+        return res.status(200).send(booksList);
+    } catch (error) {
+        return res.status(500).send(error);
     }
 }
