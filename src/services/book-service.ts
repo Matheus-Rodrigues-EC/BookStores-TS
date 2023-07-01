@@ -5,3 +5,8 @@ export function testDataBook(Book: CreateBook){
     if(Book.pages === 0 || Book.pages === 0 || Book.price === 0) return false;
     return true
 }
+
+export function RandomizeId(max: number){
+    const id: number = Math.floor(Math.random() * (max - 1 + 1)) + 1;
+    return id;
+}

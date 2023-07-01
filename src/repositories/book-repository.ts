@@ -19,3 +19,19 @@ export async function readBooks(){
 
     return list.rows;
 }
+
+export async function maxCount(){
+    const select: string = `SELECT id FROM books`;
+
+    const list = await connection.query<CreateBook>(select);
+
+    return list.rowCount;
+}
+
+export async function readBook(id: number){
+    const select: string = `SELECT * FROM books WHERE id = $1`;
+
+    const book = await connection.query<CreateBook>(select, [id]);
+
+    return book.rows[0];
+}
