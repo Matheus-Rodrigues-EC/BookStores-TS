@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { createBook, readBooks, maxCount, readBook, putBook, deleteBook } from "../repositories/book-repository";
-import { CreateBook } from "protocols/book-protocol";
+import { CreateBook } from "../protocols/book-protocol";
 import { testDataBook, RandomizeId, verifyId } from "../services/book-service";
 
 export async function AddBook(req: Request, res: Response){
