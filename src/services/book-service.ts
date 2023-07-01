@@ -10,3 +10,7 @@ export function RandomizeId(max: number){
     const id: number = Math.floor(Math.random() * (max - 1 + 1)) + 1;
     return id;
 }
+
+export function verifyId(id: number){
+    if((!id) || (id <= 0)) return false;
+}

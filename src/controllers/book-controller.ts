@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { createBook, readBooks, maxCount, readBook, putBook } from "../repositories/book-repository";
 import { CreateBook } from "protocols/book-protocol";
-import { testDataBook, RandomizeId } from "../services/book-service";
+import { testDataBook, RandomizeId, verifyId } from "../services/book-service";
 
 export async function AddBook(req: Request, res: Response){
 
@@ -46,6 +46,8 @@ export async function UpdateBook(req: Request, res: Response){
 
     const Book: CreateBook = req.body as CreateBook
     const id = Number(req.params.id);
+
+    if(!verifyId(id)) return res.status(400).send("Id não identificado");
 
     if(!testDataBook(Book)) return res.sendStatus(400);
 
